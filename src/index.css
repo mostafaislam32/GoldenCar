@@ -978,6 +978,73 @@ ul {
 }
 
 /* ============================================================
+   TIKTOK VIDEOS
+   ============================================================ */
+.tiktok-videos-section {
+  overflow: hidden;
+}
+
+.tiktok-carousel-viewport {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  overflow: hidden;
+}
+
+.tiktok-carousel-track {
+  width: max-content;
+  display: flex;
+  gap: 18px;
+  animation: tiktok-scroll 58s linear infinite;
+  will-change: transform;
+}
+
+.tiktok-video-card {
+  width: 270px;
+  flex: 0 0 270px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 10px;
+  transition: var(--t);
+}
+
+.tiktok-video-card:hover {
+  border-color: var(--border-red);
+  transform: translateY(-3px);
+}
+
+.tiktok-video-card iframe {
+  width: 100%;
+  aspect-ratio: 9 / 16;
+  border: 0;
+  border-radius: var(--radius);
+  background: var(--bg-3);
+}
+
+.tiktok-video-title {
+  padding: 10px 4px 2px;
+  font-size: 0.84rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+@keyframes tiktok-scroll {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.most-ordered-section {
+  padding-top: 40px;
+}
+
+/* ============================================================
    CATEGORIES GRID
    ============================================================ */
 .categories-section {

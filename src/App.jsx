@@ -977,6 +977,94 @@ export default function App() {
             </div>
           </div>
 
+          {/* TikTok Videos */}
+          <section className="section-wrapper tiktok-videos-section">
+            <div className="section-header">
+              <div className="section-header-left">
+                <div className="eyebrow">TikTok videos</div>
+                <h2 className="display-md">Latest store videos</h2>
+              </div>
+              <div className="section-header-right">
+                Watch recent installs, product demos, and offer highlights from Golden Car Stores.
+              </div>
+            </div>
+            <div className="tiktok-carousel-viewport">
+              <div className="tiktok-carousel-track">
+                {(() => {
+                  const videos = [
+                    { id: '7352503684518126881', title: 'Lighting upgrade' },
+                    { id: '7352503684518126881', title: 'Interior accessories' },
+                    { id: '7352503684518126881', title: 'Offer spotlight' },
+                    { id: '7352503684518126881', title: 'Installation preview' },
+                  ];
+                  const loopSet = [...videos, ...videos];
+                  return [...loopSet, ...loopSet];
+                })().map((video, i) => (
+                  <div key={`${video.title}-${i}`} className="tiktok-video-card">
+                    <iframe
+                      title={`${video.title} TikTok video`}
+                      src={`https://www.tiktok.com/embed/v2/${video.id}`}
+                      allow="autoplay; encrypted-media; picture-in-picture"
+                    />
+                    <div className="tiktok-video-title">{video.title}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {/* Items / Featured products */}
+          <section className="section-wrapper">
+            <div className="section-header">
+              <div className="section-header-left">
+                <div className="eyebrow">Items</div>
+                <h2 className="display-md">Featured products</h2>
+              </div>
+              <div className="section-header-right">
+                Selected accessories ready for quick ordering and fitment support.
+              </div>
+            </div>
+            <div className="products-grid">
+              {allProducts.slice(0, 4).map(product => (
+                <ProductCard
+                  key={product.id}
+                  product={product}
+                  activeVehicle={activeVehicle}
+                  onClick={() => setSelectedProduct(product)}
+                  onAddToCart={handleAddToCart}
+                  isAr={isAr}
+                  t={t}
+                />
+              ))}
+            </div>
+          </section>
+
+          {/* Most ordered this month */}
+          <section className="section-wrapper most-ordered-section">
+            <div className="section-header">
+              <div className="section-header-left">
+                <div className="eyebrow">Best Sellers</div>
+                <h2 className="display-md">Most ordered this month</h2>
+              </div>
+              <div className="section-header-right">
+                Top-rated products customers are buying most this month.
+              </div>
+            </div>
+            <div className="products-grid">
+              {allProducts.slice().sort((a, b) => b.reviewsCount - a.reviewsCount).slice(0, 4).map(product => (
+                <ProductCard
+                  key={product.id}
+                  product={product}
+                  activeVehicle={activeVehicle}
+                  onClick={() => setSelectedProduct(product)}
+                  onAddToCart={handleAddToCart}
+                  isAr={isAr}
+                  t={t}
+                />
+              ))}
+            </div>
+          </section>
+
             {/* Categories + Catalog */}
             <section className="section-wrapper" id="categories">
               <div className="section-header">
